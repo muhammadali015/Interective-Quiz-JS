@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .quiz-container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+        }
+
+        .question label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #17a2b8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Simple Quiz</h1>
+    <form id="quizForm">
+        <div class="question">
+            <label>1. What does HTML stand for?</label>
+            <input type="radio" name="q1" value="wrong"> Hyper Text Markup Language<br>
+            <input type="radio" name="q1" value="wrong"> Home Tool Markup Language<br>
+            <input type="radio" name="q1" value="correct"> Hyperlinks and Text Markup Language<br>
+        </div>
+
+        <div class="question">
+            <label>2. Which of the following is a JavaScript framework?</label>
+            <input type="radio" name="q2" value="correct"> React<br>
+            <input type="radio" name="q2" value="wrong"> Laravel<br>
+            <input type="radio" name="q2" value="wrong"> Django<br>
+        </div>
+
+        <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    </form>
+
+    <p id="result"></p>
+</div>
+
+<script>
+    function submitQuiz() {
+        var score = 0;
+        var totalQuestions = 2;
+
+        var q1 = document.querySelector('input[name="q1"]:checked');
+        var q2 = document.querySelector('input[name="q2"]:checked');
+
+        if (q1 && q1.value === "correct") {
+            score++;
+        }
+
+        if (q2 && q2.value === "correct") {
+            score++;
+        }
+
+        var resultMessage = "You scored " + score + " out of " + totalQuestions;
+
+
+        var result = document.getElementById("result");
+        result.innerHTML = resultMessage;
+
+        
+
+    }
+</script>
+
+</body>
+</html>
